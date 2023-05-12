@@ -1,0 +1,460 @@
+$primary-color: #ffefe7;
+$secundary-color: #ffdac6;
+$tertiary-color: #babd8d;
+$quaternary-color: #fa9500;
+$primary-text-color: #7c6a0a;
+$font-stack: "IBM Plex Sans", sans-serif;
+
+$breakpoints: (
+    sm : 540px,
+    md : 768px,
+    lg : 1024px
+);
+
+
+@mixin flexCenter($direction, $content, $items) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $items;
+}
+
+@mixin buttonStyle {
+    button {
+        background: none;
+        border-style: none;
+    }
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $primary-color;
+    font-family: $font-stack;
+    @include mobile {
+        .navbar {
+            padding: 0 5%;
+            p {
+                font-size: 20px;
+            }
+            button {
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+    }
+    @include desktop {
+        .navbar {
+            padding: 0 5%;
+            p {
+                font-size: 30px;
+            }
+            button {
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+
+    }
+}
+
+nav {
+    width: auto;
+    @include flexCenter(row, space-between, center);
+    color: $primary-text-color;
+    padding: 0 15%;
+    p {
+        font-size: 30px;
+    }
+
+    .icons {
+        display: flex;
+        gap: 15px;
+        @include buttonStyle();
+    }
+    .icon-mobile {
+        display: none;
+    }
+}
+
+main {
+    padding: 0 15%;
+    @include mobile {
+        padding: 0 5%;
+    }
+    @include tablet {
+        padding: 0 5%;
+    }
+
+    @include desktop {
+        padding: 0 5%;
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    @include flexCenter(row, space-between, top);
+
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+    }
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-section-mobile {
+        img {
+            display: none;
+            @include mobile {
+                display: block;
+                width: 100%;
+                border-radius: 19px;
+            }
+            @include tablet {
+                display: block;
+                width: 100%;
+                border-radius: 19px;
+            }
+        }
+        
+    }
+
+    .impact-section {
+        display: flex;
+        flex-direction: column;
+        column-gap: 20px;
+    }
+
+    h1 {
+        font-size: 3.5em;
+        margin-bottom: 50px;
+        @include tablet {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        @include desktop {
+            font-size: 3em;
+            margin-bottom: 5px;
+        }
+    }
+
+    p {
+        font-size: 1.3em;
+        margin-bottom: 70px;
+        padding-right: 240px;
+        @include tablet {
+            font-size: 1em;
+            padding-right: 30px;
+            margin-bottom: 5px;
+        }
+        @include mobile {
+            padding-right: 0;
+        }
+        @include desktop {
+            padding-right: 30px;
+        }
+    }
+
+    @include buttonStyle();
+
+    button {
+        width: 260px;
+        height: 73px;
+        border-radius: 35px;
+        background-color: #d68100;
+        font-size: 20px;
+        color: $primary-color;
+        font-weight: bold;
+
+        &:hover {
+            background-color: $quaternary-color;
+            transform: scale(1.1);
+            transition: 0.5s ease-in-out;
+            animation: aumento 10s ease-in-out infinite 20s;
+        }
+    }
+    .image-section {
+        img {
+            width: 550px;
+            height: 690px;
+            border-radius: 19px;
+
+            @include mobile {
+                width: 250px;
+                height: 500px;
+                display: none;
+            }
+
+            @include tablet {
+                width: 250px;
+                height: 400px;
+                display: none;
+            }
+            @include desktop {
+                width: 400px;
+                height: 500px;
+            }
+        }
+    }
+    
+}
+
+.product-section {
+    width: auto;
+    height: auto;
+    padding-bottom: 60px;
+
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+
+    .health-care {
+        h2 {
+            font-weight: 400;
+            padding-bottom: 60px;
+        }
+    }
+
+    .card-section {
+        width: auto;
+        height: auto;
+        @include flexCenter(row, space-around, center);
+        flex-wrap: wrap;
+        row-gap: 150px;
+        padding-bottom: 60px;
+        @include mobile {
+            @include flexCenter(column,center,center);
+            row-gap: 50px;
+        }
+    }
+
+    .product-card {
+        width: 300px;
+        height: 450px;
+        background-color: $secundary-color;
+        color: $primary-text-color;
+        border-radius: 10px;
+        position: relative;
+        margin-right: 40px;
+        box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.45);
+        @include mobile {
+            width: 100%;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+            transition: 0.5s ease-in-out;
+        }
+
+        .icon {
+            width: 95%;
+            height: auto;
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 10px;
+            padding-top: 20px;
+            padding-right: 10px;
+            position: absolute;
+            cursor: pointer;
+
+            svg path {
+                stroke: currentColor;
+            }
+
+            svg {
+                color: $primary-text-color;
+            }
+
+            &:hover {
+                filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(295deg) brightness(106%) contrast(102%);
+            }
+        }
+
+        .product-image {
+            width: 100%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 6px 6px 0 0;
+            }
+        }
+
+        h3 {
+            display: flex;
+            justify-content: center;
+        }
+
+        p {
+            display: flex;
+            justify-content: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+    .furniture {
+        @extend .health-care;
+
+        .product-card {
+            background-color: $tertiary-color;
+            color: $primary-color;
+        }
+
+        .product-image {
+            img {
+                background-size: contain;
+            }
+        }
+    }
+}
+
+.info-section {
+    .about-us {
+        h2 {
+            color: $primary-text-color;
+            font-size: 2em;
+            font-weight: 400;
+        }
+    }
+
+    .mission-section {
+        @include flexCenter(row, center, center);
+        padding-top: 60px;
+        padding-bottom: 60px;
+        
+        @include mobile {
+            @include flexCenter(column,center,center)
+        }
+
+        @include tablet {
+            @include flexCenter(column,center,center)
+        }
+
+        .earth {
+            @include flexCenter(row, space-evenly, center);
+            width: 550px;
+            @include mobile {
+                @include flexCenter(column,center,center);
+                width: 100%;
+            }
+            @include tablet {
+                @include flexCenter(column,center,center)
+            }
+
+            img {
+                object-fit: contain;
+            }
+
+            p {
+                font-size: 30px;
+                text-align: center;
+                color: #e86424;
+                font-weight: 500;
+            }
+        }
+
+        .innovation {
+            @extend .earth;
+        }
+    }
+
+    .gallery {
+        @extend .about-us;
+        h2 {
+            padding-bottom: 60px;
+        }
+
+        .gallery-images {
+            @include flexCenter(row, space-around, center);
+
+            @include mobile {
+                @include flexCenter(column,center,center);
+                gap: 50px;
+            }
+            @include tablet {
+                @include flexCenter(column,center,center);
+                gap: 50px;
+            }
+
+            img {
+                width: 250px;
+                height: 250px;
+                border-radius: 16px;
+                object-fit: cover;
+                box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.45);
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: 1s ease-in-out;
+                }
+            }
+        }
+    }
+    .location {
+        @extend .about-us;
+        padding-bottom: 60px;
+        h2 {
+            padding-bottom: 60px;
+        }
+        .map {
+            height: 500px;
+        width: 100%;
+        }
+        p {
+            font-size: 30px;
+            color: #E86424;
+        }
+        span {
+            font-size: 20px;
+            color: #E86424;
+        }
+    }
+}
+
+footer {
+    background-color: $quaternary-color;
+    width: 100%;
+    height: 250px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .footer-container {
+        padding-left: 40px;
+        h3 {
+            color: $primary-color;
+            font-weight: 500;
+        }
+        p {
+            color: $primary-color;
+            font-weight: 500;
+        }
+    }
+    .footer-image {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        img {
+            &:hover{
+                transform: scale(1.1);
+                transition: 0.2s ease-in-out;
+            }
+        }
+        
+    }
+    
+}
